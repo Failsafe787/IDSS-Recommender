@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network1" numsamples="10000" discsamples="10000">
+	<nodes>
+		<cpt id="Robot_Position" dynamic="plate">
+			<state id="R1" />
+			<state id="R2" />
+			<state id="R3" />
+			<state id="R4" />
+			<probabilities>0 0 0 1</probabilities>
+		</cpt>
+		<cpt id="Target_Position" dynamic="plate">
+			<state id="R1" />
+			<state id="R2" />
+			<state id="R3" />
+			<state id="R4" />
+			<probabilities>0 0 0 1</probabilities>
+		</cpt>
+		<utility id="Evalutation" dynamic="plate">
+			<parents>Robot_Position Target_Position</parents>
+			<utilities>0.6 1 0.1 0.1 1 0.6 1 0.1 0.1 1 0.6 1 0.1 0.1 1 0.6</utilities>
+		</utility>
+		<cpt id="Sensor" dynamic="plate">
+			<state id="DetectsR1" />
+			<state id="DetectsR2" />
+			<state id="DetectsR3" />
+			<state id="DetectsR4" />
+			<parents>Robot_Position Target_Position</parents>
+			<probabilities>0.9 0.05 0.03 0.02 0.08 0.8 0.06999999999999999 0.05 0.125 0.15 0.7 0.025 0.05 0.15 0.2 0.6 0.8 0.08 0.07000000000000001 0.04999999999999995 0.045 0.9 0.045 0.009999999999999939 0.03 0.1199999999999999 0.8 0.05000000000000004 0.02000000000000002 0.07000000000000001 0.21 0.7 0.7 0.21 0.07000000000000001 0.02 0.05 0.8 0.12 0.03 0.01 0.045 0.9 0.045 0.05 0.07000000000000001 0.08 0.8 0.6 0.2 0.15 0.05 0.025 0.7 0.15 0.125 0.05 0.07000000000000001 0.8 0.08 0.02 0.03 0.05 0.9</probabilities>
+		</cpt>
+		<decision id="Action" dynamic="plate">
+			<state id="Left" />
+			<state id="Right" />
+			<state id="Stay" />
+			<parents>Sensor</parents>
+		</decision>
+	</nodes>
+	<dynamic numslices="4">
+		<cpt id="Robot_Position" order="1">
+			<parents>Action Robot_Position</parents>
+			<probabilities>0.975 0.025 0 0 0.95 0.025 0.025 0 0 0.95 0.025 0.025 0 0 0.975 0.025 0.025 0.975 0 0 0.025 0.025 0.95 0 0 0.025 0.025 0.95 0 0 0.025 0.975 0.975 0.025 0 0 0.025 0.95 0.025 0 0 0.025 0.95 0.025 0 0 0.025 0.975</probabilities>
+		</cpt>
+		<cpt id="Target_Position" order="1">
+			<parents>Target_Position</parents>
+			<probabilities>0.5 0.2 0.2 0.1 0.2 0.5 0.2 0.1 0.1 0.2 0.5 0.2 0.1 0.2 0.2 0.5</probabilities>
+		</cpt>
+	</dynamic>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.2.2414.0 ACADEMIC" name="Network1" faultnameformat="nodestate">
+			<plate leftwidth="107" rightwidth="100">137 88 1076 605</plate>
+			<node id="Evalutation">
+				<name>Evalutation</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>722 440 827 476</position>
+			</node>
+			<node id="Robot_Position">
+				<name>Robot Position</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>342 244 430 299</position>
+			</node>
+			<node id="Target_Position">
+				<name>Target_Position</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>347 431 438 487</position>
+			</node>
+			<node id="Sensor">
+				<name>Sensor</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>721 346 817 394</position>
+			</node>
+			<node id="Action">
+				<name>Action</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>725 255 817 291</position>
+			</node>
+			<textbox>
+				<caption>Luca Banzato\nLast revision: 08/18/2017\n\nEU(&quot;Too Far&quot;) = 0.1\nEU(&quot;Too Near&quot;) = 0.6\nEU(&quot;OK&quot;) = 1\n\nRobot starts in R4\nTarget starts in R4</caption>
+				<font color="000000" name="Arial" size="8" />
+				<position>140 629 262 755</position>
+			</textbox>
+		</genie>
+	</extensions>
+</smile>

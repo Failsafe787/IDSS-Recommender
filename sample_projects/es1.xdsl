@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This network was created in GeNIe Academic, which can be used for educational and research purposes only -->
+<smile version="1.0" id="Network1" numsamples="10000" discsamples="10000">
+	<nodes>
+		<decision id="CT_Scan">
+			<state id="Perform" />
+			<state id="DontPerform" />
+		</decision>
+		<cpt id="Metastasis">
+			<state id="MM_Present" />
+			<state id="MM_Absent" />
+			<probabilities>0.46 0.54</probabilities>
+		</cpt>
+		<cpt id="State_After_CT_Scan">
+			<state id="CTDetectsMM" />
+			<state id="CTDoesntDetectMM" />
+			<state id="CTNotPerformed" />
+			<parents>CT_Scan Metastasis</parents>
+			<probabilities>0.8200000000000001 0.18 0 0.19 0.8100000000000001 0 0 0 1 0 0 1</probabilities>
+		</cpt>
+		<decision id="M_Test">
+			<state id="Perform" />
+			<state id="DontPerform" />
+			<parents>State_After_CT_Scan</parents>
+		</decision>
+		<cpt id="State_After_MTest">
+			<state id="MDetectsMM" />
+			<state id="MDoesntDetectMM" />
+			<state id="MNotPerformed" />
+			<parents>M_Test Metastasis</parents>
+			<probabilities>0.8200000000000001 0.18 0 0.005000000000000004 0.995 0 0 0 1 0 0 1</probabilities>
+		</cpt>
+		<decision id="Treatment">
+			<state id="Tracheotomy" />
+			<state id="Radiations" />
+			<parents>State_After_MTest</parents>
+		</decision>
+		<cpt id="Patient_Health_BeforeOperation">
+			<state id="Lives" />
+			<state id="Dies" />
+			<parents>M_Test</parents>
+			<probabilities>0.995 0.005 1 0</probabilities>
+		</cpt>
+		<cpt id="Patient_Health_After_Operation">
+			<state id="Lives" />
+			<state id="Dies" />
+			<parents>Treatment</parents>
+			<probabilities>0.963 0.037 0.98 0.02</probabilities>
+		</cpt>
+		<utility id="LifeExpectation">
+			<parents>Metastasis Patient_Health_BeforeOperation Treatment Patient_Health_After_Operation</parents>
+			<utilities>1.8 0 1.8 0 0 0 0 0 4.45 0 2.64 0 0 0 0 0</utilities>
+		</utility>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.2.2414.0 ACADEMIC" name="Network1" faultnameformat="nodestate">
+			<node id="Treatment">
+				<name>Treatment</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>687 62 848 122</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Metastasis">
+				<name>Metastasis</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>230 62 351 119</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="CT_Scan">
+				<name>CT Scan</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>50 261 191 341</position>
+				<barchart active="true" width="129" height="64" />
+			</node>
+			<node id="M_Test">
+				<name>M Test</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>222 426 359 503</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="State_After_CT_Scan">
+				<name>State After CT Scan</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>226 267 354 338</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="State_After_MTest">
+				<name>State After M Test</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>423 430 545 498</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Patient_Health_BeforeOperation">
+				<name>Patient Health Before Operation</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>423 575 541 644</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Patient_Health_After_Operation">
+				<name>Patient Health After Operation</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>844 276 971 342</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="LifeExpectation">
+				<name>Life Expectation</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>695 588 836 633</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<textbox>
+				<caption>Luca Banzato\nLast revision: 08/14//2017</caption>
+				<font color="000000" name="Arial" size="8" />
+				<position>860 692 985 720</position>
+			</textbox>
+		</genie>
+	</extensions>
+</smile>
